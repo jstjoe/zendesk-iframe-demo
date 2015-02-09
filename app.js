@@ -5,7 +5,9 @@
       'app.activated':    'onActivated',
       'app.deactivated':  'onDeactivated',
       // 'app.created':      'onCreated',
-      // 'app.willDestroy':  'onDestroyed'
+      'app.willDestroy':  'onDestroyed',
+
+      'iframe.roger':'onConnected'
 
     },
     requests: {
@@ -15,7 +17,8 @@
           type: 'PATCH',
           contentType: 'JSON',
           data: JSON.stringify({
-            date: data.date
+            date: data.date,
+            id: data.agent
           })
         };
       },
@@ -25,8 +28,9 @@
           type: 'PUT',
           contentType: 'JSON',
           data: JSON.stringify({
-           date: data.date,
-           action: data.action
+            date: data.date,
+            action: data.action,
+            id: data.ticket
           })
         };
       },
@@ -38,23 +42,25 @@
           type: 'PUT',
           contentType: 'JSON',
           data: JSON.stringify({
-           date: data.date,
-           action: data.action
+            date: data.date,
+            action: data.action,
+            id: data.user
           })
         };
       }
     },
 
     onActivated: function(e) {
-      this.log('join');
+      this.log('joined');
       if(e.firstLoad) {
         // this.firebase = 'https://theeyeofzen.firebaseio.com/accounts/'+ this.currentAccount().subdomain();
       }
     },
     onDeactivated: function() {
-      this.log('leave');
+      this.log('backgrounded');
     },
     onCreated: function() {
+      // not currently used
       this.log('created');
     },
     onDestroyed: function() {
@@ -120,6 +126,11 @@
           this.hide();
         }
       }
+    },
+
+    // messages
+    onConnected: function(data) {
+      services.notify("The Eye of Zen sees all. Use it wisely.");
     },
 
 

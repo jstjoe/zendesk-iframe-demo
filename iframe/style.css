@@ -1,0 +1,6 @@
+.ticket-id, .user-id {
+  width: 20%;
+}
+.ticket-action, .user-action {
+  width: 30%;
+}
