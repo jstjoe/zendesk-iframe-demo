@@ -12,7 +12,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="ticket in agent.tickets">
+        <tr ng-repeat="ticket in agent.tickets | filter:'!closed'">
+          <!-- makes a row for each ticket -->
           <td class="ticket-id">
             <a href="https://{{subdomain}}.zendesk.com/agent/tickets/{{ticket.id}}" target="_top">#{{ticket.id}}</a>
           </td>
@@ -36,7 +37,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="user in agent.users">
+        <tr ng-repeat="user in agent.users | orderBy:'date':true">
+          <!-- makes a row for each user -->
           <td class="user-id">
             <a href="https://{{subdomain}}.zendesk.com/agent/users/{{user.id}}" target="_top">#{{user.id}}</a>
           </td>
