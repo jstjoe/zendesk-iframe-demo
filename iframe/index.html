@@ -28,8 +28,6 @@
         var user =      context.currentUser;
         account =   context.currentAccount;
         var location =  context.location;
-        url = "https://theeyeofzen.firebaseio.com/accounts/" + account.subdomain;
-        agentsRef = new Firebase( url + "/agents");
         
         // tell the zendesk app we connected
         zen.postMessage('roger', { connected: true });
