@@ -14,7 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <!-- jQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
-
+    <style type="text/css">
+      html, body { height: 100%; margin: 0; padding: 0; }
+      #map { height: 400px; }
+    </style>
     <script>
       // #### Connect to Zendesk
       var url,
@@ -22,11 +25,8 @@
           account;
       var zen = window.ZAFClient.init(function(context) {
         var user =      context.currentUser;
-        console.dir(user);
         var location =  context.location;
-        console.dir(location);
         account =   context.currentAccount;
-        console.dir(account);
         
         // tell the zendesk app we connected
         zen.postMessage('roger', { connected: true });
@@ -34,7 +34,7 @@
         $('span.name').html(user.name);
         $('span.role').html(user.role);
         $('span.subdomain').html(account.subdomain);
-        alert('Hey ' + user.name);
+        // alert('Hey ' + user.name);
       });
       zen.on('sendDown', function(data) { // listen to the 'helloIframe' message sent from the app
         if (data.text) {
@@ -46,10 +46,24 @@
 
   </head>
   <body>
-    <h3>This is the iFrame'd page</h3>
+    <h3>This is the iFrame'd page, with data from the parent App</h3>
     Name: <span class="name"></span><br>
     Role: <span class="role"></span><br>
     Subdomain: <span class="subdomain"></span><br><br>
-    <div class="main"></div>
+    <!-- <div class="main"></div> -->
+
+    <div id="map"></div>
+    <script type="text/javascript">
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDq6F5x7kXr_4iXLs3ly6yHm25ui6twFoc&callback=initMap">
+    </script>
   </body>
 </html>
