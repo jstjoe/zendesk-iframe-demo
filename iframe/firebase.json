@@ -1,5 +1,5 @@
 {
-  "firebase": "theeyeofzen",
+  "firebase": "zendesk-iframe-demo",
   "public": ".",
   "ignore": [
     "firebase.json",
