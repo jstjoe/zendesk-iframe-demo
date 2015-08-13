@@ -1,0 +1,32 @@
+<!-- create filters in a separate tickets controller
+filter agents to tickets
+filter agents to users (userscontroller) -->
+
+<div class="tickets" ng-controller="TicketsController">
+  <h3>Tickets</h3>
+    <!-- tickets -->
+    <table class="u-full-width" ng-show="tickets">
+      <thead>
+        <tr>
+          <th class="ticket-id">ID</th>
+          <th class="ticket-action">Action</th>
+          <th class="ticket-date">When</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="ticket in tickets track by $index">
+          <!-- makes a row for each ticket -->
+          <td class="ticket-id">
+            <a href="https://{{subdomain}}.zendesk.com/agent/tickets/{{ticket.id}}" target="_top">#{{ticket.id}}</a>
+          </td>
+          <td class="ticket-action">
+            {{ticket.action}}
+          </td>
+          <td class="ticket-date">
+            <span am-time-ago="ticket.date">{{ticket.date}}</span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+</div>
