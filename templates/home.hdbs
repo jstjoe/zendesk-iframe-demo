@@ -1,4 +1,4 @@
-<a href="/agent/apps/the-eye/something?name=joe&foo=bar">Go to Something</a>
+<input class="send_down" type="text"></input><button class="btn btn-primary send_down">Send Down</button>
 <p>This HTML is in the parent app, below this is the iFrame</p>
 <br>
 {{iframe uri}}

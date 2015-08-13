@@ -2,13 +2,13 @@
 
   return {
     events: {
-      'pane.activated':    'onPaneActivated',
+      'app.created':       'onAppActivated',// ticket sidebar shown
+      'pane.activated':    'onPaneActivated',// nav bar shown
 
       'iframe.roger':'onConnected',
       'click button.send_down':'sendDown',
 
       'app.route.changed':'onRouted'
-
     },
     requests: {
       requestSomething: function() {
@@ -17,9 +17,12 @@
         };
       }
     },
-
+    onAppActivated: function(e) {
+      if(this.currentLocation() == 'ticket_sidebar') {
+        this.switchTo('link');
+      }
+    },
     onPaneActivated: function(e) {
-      // var uri = helpers.fmt('https://%@.zendesk.com/api/v2/apps/%@/assets/iframe.html', this.currentAccount().subdomain(), '64483');//this.installationId()
       var uri = 'https://zendesk-iframe-demo.firebaseapp.com/';
       this.switchTo('home', {uri: uri});
     },
@@ -31,13 +34,14 @@
     },
     // messages
     onConnected: function(data) {
-      services.notify("now groking with the iFrame");
-      // console.dir(data);
+      // console.log("Connected to the iFrame");
+      // services.notify("now groking with the iFrame");
     },
 
     onRouted: function(e, eData) {
       console.log('Routing event!');
       // alert('Routing event!');
+      services.notify('Received App Routing Event, route and params logged to console.');
       console.dir(eData.appRoute);
       console.dir(eData.appParams);
     }

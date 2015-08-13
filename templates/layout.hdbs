@@ -1,4 +1,5 @@
-<header><span class="logo"/><h1>iFrame App</h1></header>
-<input class="send_down" type="text"></input><button class="btn btn-primary send_down">Send Down</button>
-{{!-- <button class="btn btn-primary pull-right ping_all">Ping</button> --}}
+<header>
+  <span class="logo"/>
+  <h1>iFrame App</h1>
+</header>
 <section data-main/>

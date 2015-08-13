@@ -1,5 +1,5 @@
 {
-  "name": "The Eye",
+  "name": "iFrame Demo",
   "author": {
     "name": "Joe McCarron",
     "email": "joe@joem.cc",
@@ -7,7 +7,7 @@
   },
   "defaultLocale": "en",
   "private": true,
-  "location": ["ticket_sidebar", "new_ticket_sidebar", "user_sidebar", "nav_bar"],
+  "location": ["nav_bar", "ticket_sidebar"],
   "version": "1.0.0",
   "frameworkVersion": "1.0"
 }
